@@ -2,14 +2,27 @@
 
 一份开箱即用的 Shadowrocket 规则配置，导入后添加自己的节点或订阅即可使用。
 
-当前版本已将 Google AI 相关规则独立并入 `Google.list`，确保 `gemini.google.com`、`bard.google.com`、`generativelanguage.googleapis.com` 等请求统一归入 `🔍 谷歌服务`。同时新增 `ApplePush.list`，将 Apple Push Notification service 相关域名优先归入 `🍎 苹果推送`，默认走代理节点，以改善 X、Telegram 等 App 在部分网络环境下无法及时收到推送的问题。
+## 当前重点
 
-默认策略为：Google 服务走日本节点，并提供香港节点作为手动可选分区；AI 服务走美国节点，Apple 推送走节点选择，普通 Apple 服务仍默认直连，`🌍 非中国` 与 `🐟 漏网之鱼` 也默认走日本节点，便于尽量减少 Google 会话跨地区出口带来的风控问题。
+- Google AI 相关规则已并入 `Google.list`，`gemini.google.com`、`bard.google.com`、`generativelanguage.googleapis.com` 等请求统一归入 `🔍 谷歌服务`。
+- `🔍 谷歌服务` 默认走日本节点，同时提供香港节点作为手动可选分区，便于在不同网络环境下切换。
+- 新增 `ApplePush.list`，将 Apple Push Notification service 相关域名优先归入 `🍎 苹果推送`，改善 X、Telegram 等 App 在部分网络环境下无法及时收到推送的问题。
+
+## 默认策略
+
+| 服务 | 默认策略 | 可选策略 |
+|------|----------|----------|
+| 🔍 谷歌服务 | 🇯🇵 日本节点 | 🇭🇰 香港节点、节点选择、PROXY、DIRECT |
+| 🤖 AI 服务 | 🇺🇸 美国节点 | 节点选择、PROXY、DIRECT |
+| 🍎 苹果推送 | 🚀 节点选择 | PROXY、DIRECT |
+| 🍏 苹果服务 | DIRECT | 节点选择、PROXY |
+| 🌍 非中国 | 🇯🇵 日本节点 | 节点选择、PROXY、DIRECT |
+| 🐟 漏网之鱼 | 🇯🇵 日本节点 | 节点选择、PROXY、DIRECT |
 
 ## 快速开始
 
-1. 复制配置文件的 Raw 链接
-https://raw.githubusercontent.com/LingJingMaster/Shadowrocket-Rules/refs/heads/main/Shadowrocket.conf
+1. 复制配置文件的 Raw 链接：
+   `https://raw.githubusercontent.com/LingJingMaster/Shadowrocket-Rules/refs/heads/main/Shadowrocket.conf`
 2. 打开 Shadowrocket → 配置 → 右上角 `+` → 粘贴链接 → 下载
 3. 点击已下载的配置，设为使用中（✔️）
 4. 首页添加你自己的节点或订阅
@@ -18,7 +31,6 @@ https://raw.githubusercontent.com/LingJingMaster/Shadowrocket-Rules/refs/heads/m
 或者扫描二维码
 
 <img width="200" height="200" alt="ctool-2026-02-26-17-13-16" src="https://github.com/user-attachments/assets/22f1b4f7-3265-493c-9e5a-2b662924ed2f" />
-
 
 ## 策略组说明
 
@@ -33,7 +45,7 @@ https://raw.githubusercontent.com/LingJingMaster/Shadowrocket-Rules/refs/heads/m
 
 ## 分流规则
 
-规则从上到下依次匹配，**谷歌服务优先级高于 AI 服务**（Gemini 走谷歌而非 AI 组）。
+规则从上到下依次匹配。`🔍 谷歌服务` 优先级高于 `🤖 AI 服务`，因此 Gemini 会走谷歌服务策略组。
 
 | 优先级 | 服务 | 默认策略 |
 |--------|------|----------|
@@ -69,7 +81,7 @@ https://raw.githubusercontent.com/LingJingMaster/Shadowrocket-Rules/refs/heads/m
 ## 注意事项
 
 - 地区分组通过节点名称关键词自动匹配，请确保你的节点名称包含地区标识（如 🇭🇰、HK、香港等）
-- AI 服务默认走美国节点，谷歌服务默认走日本节点，并可在 App 内手动切换香港节点；`非中国` 和 `漏网之鱼` 也默认走日本节点，可在 App 内手动切换
+- Google、AI、非中国和漏网之鱼的默认出口可在 App 内手动切换
 - 如需 HTTPS 解密功能，请在 Shadowrocket 中生成并安装 CA 证书
 
 ## License
