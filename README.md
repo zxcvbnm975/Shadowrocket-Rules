@@ -4,9 +4,11 @@
 
 ## 当前重点
 
-- Google AI 相关规则已并入 `Google.list`，`gemini.google.com`、`bard.google.com`、`generativelanguage.googleapis.com` 等请求统一归入 `🔍 谷歌服务`。
+- Google AI 相关规则已并入 `Google.list`
 - `🔍 谷歌服务` 默认走日本节点，同时提供香港节点作为手动可选分区，便于在不同网络环境下切换。
-- 新增 `ApplePush.list`，将 Apple Push Notification service 相关域名优先归入 `🍎 苹果推送`，改善 X、Telegram 等 App 在部分网络环境下无法及时收到推送的问题。
+- 新增 `ApplePush.list`
+   - 将 Apple Push Notification service 相关域名优先归入 `🍎 苹果推送`
+   - 改善 X、Telegram 等 App 在部分网络环境下无法及时收到推送的问题。
 
 ## 默认策略
 
@@ -75,7 +77,11 @@
 - DNS 劫持：拦截 8.8.8.8 / 8.8.4.4 防止硬编码 DNS 绕过规则
 - QUIC 屏蔽：对代理连接屏蔽 UDP/443，强制回退 HTTP/2
 - 本地服务保护：`localhost.weixin.qq.com` 固定解析到 `127.0.0.1` 并强制直连，避免 fake-IP 影响微信本地回调
-- Apple 推送：`push.apple.com`、`gateway.push.apple.com`、`api.push.apple.com`、`sandbox.push.apple.com` 默认走代理
+- Apple 推送：默认走代理
+   - `push.apple.com`
+   - `gateway.push.apple.com`
+   - `api.push.apple.com`
+   - `sandbox.push.apple.com` 
 - Google 防跳转：`google.cn` / `g.cn` 自动 302 到 `google.com`
 - MITM：仅解密 `*.google.cn`
 
