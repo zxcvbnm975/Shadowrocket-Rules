@@ -3,12 +3,13 @@
 # REPO: https://github.com/blackmatrix7/ios_rule_script
 # UPDATED: 2026-05-10 02:20:12
 # MODIFIED: 2026-05-10
-# DOMAIN: 9
+# NOTE: Trimmed list
+# DOMAIN: 8
 # DOMAIN-KEYWORD: 7
-# DOMAIN-SUFFIX: 1558
-# IP-CIDR: 13
+# DOMAIN-SUFFIX: 8
+# IP-CIDR: 10
 # USER-AGENT: 23
-# TOTAL: 1610
+# TOTAL: 56
 
 # > iCloud Photos / CloudKit / Apple CDN (supplement)
 DOMAIN-SUFFIX,icloud.com
@@ -18,6 +19,15 @@ DOMAIN-SUFFIX,icloud-content.com.cn
 DOMAIN-SUFFIX,apple-cloudkit.com
 DOMAIN-SUFFIX,cdn-apple.com
 DOMAIN-SUFFIX,mzstatic.com
+DOMAIN,humb.apple.com
+DOMAIN,register.appattest.apple.com
+DOMAIN,doh.dns.apple.com
+DOMAIN,certs.apple.com
+DOMAIN,crl.apple.com
+DOMAIN,ocsp.apple.com
+DOMAIN,ocsp2.apple.com
+DOMAIN,guzzoni.apple.com
+DOMAIN-SUFFIX,smoot.apple.com
 
 # > Apple (from blackmatrix7/ios_rule_script)
 DOMAIN-KEYWORD,apple-support.akadns.net
@@ -58,8 +68,5 @@ IP-CIDR,17.0.0.0/8,no-resolve
 IP-CIDR,192.35.50.0/24,no-resolve
 IP-CIDR,198.183.17.0/24,no-resolve
 IP-CIDR,205.180.175.0/24,no-resolve
-IP-CIDR,2403:300::/32,no-resolve
-IP-CIDR,2620:149::/32,no-resolve
-IP-CIDR,2a01:b740::/32,no-resolve
 IP-CIDR,63.92.224.0/19,no-resolve
 IP-CIDR,65.199.22.0/23,no-resolve
